@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar layoutY="6.0" prefHeight="54.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fitxer">
+            <items>
+              <MenuItem fx:id="sortir" mnemonicParsing="false" onAction="#sortirAplicacio" text="Sortir" />
+                  <MenuItem fx:id="obrir" mnemonicParsing="false" onAction="#obrirDocument" text="Obrir" />
+            </items>
+          </Menu>
+          <Menu fx:id="editar" mnemonicParsing="false" onShowing="#deshabilitarButons" text="Editar">
+            <items>
+                  <MenuItem fx:id="copiar" mnemonicParsing="false" onAction="#copiarText" text="Copiar" />
+                  <MenuItem fx:id="tallar" mnemonicParsing="false" onAction="#tallarText" text="Tallar" />
+                  <MenuItem fx:id="enganxar" mnemonicParsing="false" onAction="#enganxarText" text="Enganxar" />
+                  <MenuItem fx:id="desfer" mnemonicParsing="false" onAction="#desferText" text="Desfer" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opcions">
+            <items>
+                  <Menu mnemonicParsing="false" text="Tamany">
+                    <items>
+                        <MenuItem fx:id="tamany1" mnemonicParsing="false" onAction="#cambiarTamany1" text="Tamany 1" />
+                        <MenuItem fx:id="tamany2" mnemonicParsing="false" onAction="#cambiarTamany2" text="Tamany 2" />
+                      <MenuItem fx:id="tamany3" mnemonicParsing="false" onAction="#cambiarTamany3" text="Tamany 3" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Font">
+                    <items>
+                        <MenuItem fx:id="arial" mnemonicParsing="false" onAction="#cambiarArial" text="Arial" />
+                        <MenuItem fx:id="courier" mnemonicParsing="false" onAction="#cambiarCourier" text="Courier" />
+                      <MenuItem fx:id="verdana" mnemonicParsing="false" onAction="#cambiarVerdana" text="Verdana" />
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Ajuda">
+              <items>
+                <MenuItem fx:id="ajuda" mnemonicParsing="false" onAction="#mostrarAjuda" text="Ajuda" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar fx:id="toolbar" layoutY="52.0" prefHeight="54.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <items>
+            <Button fx:id="tb_copy" mnemonicParsing="false" onAction="#tbCopy" />
+            <Button fx:id="tb_cut" layoutX="10.0" layoutY="5.0" mnemonicParsing="false" onAction="#tbCut" />
+            <Button fx:id="tb_paste" layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onAction="#tbPaste" />
+            <Button fx:id="tb_undo" layoutX="94.0" layoutY="5.0" mnemonicParsing="false" onAction="#tbUndo" />
+        </items>
+      </ToolBar>
+      <TextArea fx:id="areaTexto" layoutY="107.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="107.0" />
+   </children>
+</AnchorPane>
