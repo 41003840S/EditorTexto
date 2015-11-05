@@ -12,7 +12,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.io.File;
+import java.io.*;
 
 
 public class Controller {
@@ -33,26 +33,64 @@ public class Controller {
     }
 
     //FITXER
+    public void obrirDocument(ActionEvent actionEvent) {
+
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Obrir document");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        Stage mainStage = new Stage();
+
+        File selectedFile = fileChooser.showOpenDialog(mainStage);
+        fileChooser.setTitle(selectedFile.getName());
+
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(selectedFile));
+            String linea = null;
+
+            while ((linea = br.readLine()) != null) {
+                areaTexto.setText(areaTexto.getText() + linea + "\n");
+            }
+        }
+        catch(FileNotFoundException a){}
+        catch (IOException b){}
+    }
+
+    public void guardarDocument(ActionEvent actionEvent) {
+
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Guardar document");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        Stage mainStage = new Stage();
+
+        File selectedFile = fileChooser.showSaveDialog(mainStage);
+        fileChooser.setTitle(selectedFile.getName());
+
+        try{
+            selectedFile.createNewFile();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(selectedFile));
+            bw.write(areaTexto.getText());
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void sortirAplicacio(ActionEvent actionEvent) {
         Platform.exit();
     }
 
-    public void obrirDocument(ActionEvent actionEvent) {
-
-        Window mainStage = null;
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-                new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(mainStage);
-        if (selectedFile != null) {
-           //selectedFile.display(mainStage);
-
-        }
-    }
 
     //EDITAR
     public void copiarText(ActionEvent actionEvent) {
@@ -82,6 +120,7 @@ public class Controller {
                 enganxar.setDisable(false);
             }
     }
+
 
     //OPCIONS
         //TAMANY

@@ -12,6 +12,7 @@
             <items>
               <MenuItem fx:id="sortir" mnemonicParsing="false" onAction="#sortirAplicacio" text="Sortir" />
                   <MenuItem fx:id="obrir" mnemonicParsing="false" onAction="#obrirDocument" text="Obrir" />
+                  <MenuItem fx:id="guardar" mnemonicParsing="false" onAction="#guardarDocument" text="Guardar" />
             </items>
           </Menu>
           <Menu fx:id="editar" mnemonicParsing="false" onShowing="#deshabilitarButons" text="Editar">
